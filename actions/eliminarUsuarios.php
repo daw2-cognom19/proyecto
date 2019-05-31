@@ -1,6 +1,6 @@
 <?php
- include ('db.php');
+ include ('conexion.php');
  $id = $_GET['id'];
- mysqli_query($conexion, "DELETE FROM huespedes WHERE idHuespedes='$id'");
- header("location:../usuarios.php");
+ mysqli_query($conexion, "DELETE FROM huespedes WHERE id='$id'");
+ header("location:../vistas/usuarios.php");
 ?>

@@ -1,24 +1,23 @@
 <?php
-include ('db.php');
-$id = $_POST['id'];
-$Nombre = $_POST['Nombre'];
-$Apellido = $_POST['Apellido'];
-$sApellido = $_POST['sApellido'];
-$DNI = $_POST['DNI'];
-$Telefono = $_POST['Telefono'];
-$Piso = $_POST['Piso'];
-$Habitacion = $_POST['Habitacion'];
-$Administrador = $_POST['Administrador'];
+include ('conexion.php');
+$id = $_GET['id'];
+$nombre = $_GET['nombre'];
+$apellido = $_GET['apellido'];
+$s_apellido = $_GET['s_apellido'];
+$dni = $_GET['dni'];
+$telefono = $_GET['telefono'];
+$piso = $_GET['piso'];
+$habitacion = $_GET['habitacion'];
+$idAdministrador = $_GET['idAdministrador'];
 
-$sql = "UPDATE huespedes SET 
-Nombre='$Nombre', 
-Apellido = '$Apellido',
-sApellido = '$sApellido', 
-DNI = '$DNI',  
-Telefono = '$Telefono', 
-Piso = '$Piso', 
-Habitacion = '$Habitacion', 
-Administrador = '$Administrador', 
-WHERE idHuespedes = '$id'";
+$sql = "UPDATE huespedes SET nombre='$nombre', 
+apellido = '$apellido', 
+s_apellido = '$s_apellido',
+dni = '$dni',
+telefono = '$telefono',
+piso = '$piso',
+habitacion = '$habitacion',
+idAdministrador = '$idAdministrador'
+WHERE id = '$id'";
 mysqli_query($conexion, $sql);
 ?>

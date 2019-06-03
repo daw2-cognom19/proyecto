@@ -21,7 +21,7 @@ class Usuarios{
 		return $this->conn->query("SELECT * from $this->table JOIN administrador on $this->table.CategoryID=administrador.CategoryID WHERE $this->table.id='$id'");
 	}
 	
-	public function update($username, $password, $admin, $productImg){
+	public function update($id, $username, $password, $admin, $productImg){
 		$this->conn->query("UPDATE $this->table SET username='$username', password='$password', CategoryID='$admin', productImg='$productImg' WHERE id='$id'");
 	}
 

@@ -4,23 +4,7 @@ session_start();
 if (isset($_SESSION["user"])) {
    header("Location: usuarios.php");
 }
-$server = "localhost";
-$username = "root";
-$password = "";
-$database = "crud";
-$connId = mysqli_connect($server,$username,$password,$database);
-$tracking_page_name = "index.php";
-$agent = $_SERVER['HTTP_USER_AGENT'];
-if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-} else {
-    $ip = $_SERVER['REMOTE_ADDR'];
-}
-$host_name = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-$strSQL = "INSERT INTO transeuntes(id, tm, agent, ip, tracking_page_name, host_name) VALUES(null, curdate(),'$agent','$ip','$tracking_page_name','$host_name')";
-mysqli_query($connId, $strSQL);
+date_default_timezone_get();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -175,7 +159,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -185,7 +169,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -195,7 +179,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -205,7 +189,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -215,7 +199,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -239,7 +223,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -249,7 +233,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -259,7 +243,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -269,7 +253,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -279,7 +263,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -303,7 +287,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -313,7 +297,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -323,7 +307,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -333,7 +317,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -343,7 +327,7 @@ mysqli_query($connId, $strSQL);
                   <div class="price">
                      <p style="text-align: center">20€/noche</p>
                   </div>
-                  <img  class="imagenes" src="img/img1.png">
+                  <img  class="imagenes" src="images/img/img1.png">
                   <div class="text-left">
                      <p class="lilFont">Habitación individual</p>
                      <p class="lilFont">Estado: <span style="color: green">Disponible</span></p>
@@ -353,6 +337,9 @@ mysqli_query($connId, $strSQL);
          </div>
          <div class="container">
             <legend></legend>
+         </div>
+         <div>
+            <!-- aki twitter -->
          </div>
          <div class="container">
           <form class="well form-horizontal" action="../actions/contacto.php" method="post" id="contact_form">
@@ -436,7 +423,7 @@ mysqli_query($connId, $strSQL);
                      </li>
                      <li>
                         <span style="color: black;font-weight: bold; text-align: center;"> Distancia entre la boca de metro</span><br>
-                        <img src="img/distancia.png" alt="Distancia Hostal y boca de metro" width="300" height="250">
+                        <img src="images/img/distancia.png" alt="Distancia Hostal y boca de metro" width="300" height="250">
                      </li>
                   </ul>
                </div>

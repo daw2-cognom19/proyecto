@@ -8,7 +8,7 @@ class Contacto {
 		$this->conn = $db->getConnection();
 		$this->table = "contacto";
 	}
-	public function insertar($name, $email, $textarea){
+	public function save($name, $email, $textarea){
 		$this->conn->query("INSERT into $this->table(name, email, textarea) VALUES('$name', '$email', '$textarea')");
 	}
 }

@@ -1,6 +1,7 @@
 $(document).ready(function() {
     llamarContacto();
     logIn();
+    detectPage();
 });
 
 function llamarContacto() {
@@ -51,8 +52,7 @@ function llamarContacto() {
             e.preventDefault();
             var $form = $(e.target);
             var bv = $form.data('bootstrapValidator');
-            $.post('../actions/contacto.php',$form.serialize(), function(result) {
-                console.log('a');
+            $.post('rest/contacto.php',$form.serialize(), function(result) {
             }, 'json');
         });    
 }
@@ -85,4 +85,18 @@ function logIn() {
             });
         }
     });    
+}
+
+function detectPage() {
+    alert('j');
+    $.ajax({
+        url: "rest/transeuntes.php",
+        type: "POST",
+        beforeSend: function(){
+            console.log('enviando datos');
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
 }

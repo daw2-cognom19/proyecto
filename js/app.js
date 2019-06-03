@@ -1,8 +1,8 @@
 $(document).ready(function(){
 	$("#save").click(saveData);
-	$("[name='agregar']").click(function(){
+	$("#add").click(function(){
 		mode = "insert";
-		$("#save").attr("value", "Agregar");
+		$("#save").attr("value", "Añadir");
 	})
 	$("body").on("click", ".edit", function(){
 		mode = "update";
@@ -12,7 +12,7 @@ $(document).ready(function(){
 	});
 	$("body").on("click", ".delete", function(){
 		idTarget = $(this).attr("data-id");
-		var temp = confirm("¿Deseas borrar?");
+		var temp = confirm("¿Deseas borrarlo?");
 		if(!temp){
 			return false;
 		}else{
@@ -25,74 +25,43 @@ $(document).ready(function(){
 	var idTarget = -1;
 
 	var data;
-	var nombre;
-	var apellido;
-	var s_apellido;
-	var DNI;
-	var telefono;
-	var piso;
-	var habitacion;
-	var administrador;
-	var img;
+	var username;
+	var password;
+	var category;
+	var productImg;
 
 	function getValue(){
 		data = new FormData();
 
-		nombre = $("[name='nombre']").val();
-		apellido = $("[name='apellido']").val();
-		s_apellido = $("[name='s_apellido']").val();
-		DNI = $("[name='DNI']").val();
-		telefono = $("[name='telefono']").val();
-		piso = $("[name='piso']").val();
-		habitacion = $("[name='habitacion']").val();
-		administrador = $("[name='administrador']").val();
-		img = $("[name='img']").prop("files")[0];
+		username = $("#username").val();
+		password = $("#password").val();
+		category = $("[name='kategori']").val();
+		productImg = $("[name='product_img']").prop("files")[0];
 
-		if(img == undefined){
-			img = null;
+		if(productImg==undefined){
+			productImg = null;
 		}
 
 		data.append("mode", mode);
 		data.append("id", idTarget);
-		data.append("nombre", nombre);
-		data.append("apellido", apellido);
-		data.append("s_apellido", s_apellido);
-		data.append("DNI", DNI);
-		data.append("telefono", telefono);
-		data.append("piso", piso);
-		data.append("habitacion", habitacion);
-		data.append("administrador", administrador);
-		data.append("img", img);
+		data.append("username", username);
+		data.append("password", password);
+		data.append("category", category);
+		data.append("productImg", productImg);
 	}
 
 	function saveData(){
 		getValue();
-		if(nombre == ""){
+		if(username == ""){
 			alert("El nombre es requerido");
-		}
-		else if(apellido == ""){
-			alert("El apellido es requerido");
-		}
-		else if(s_apellido == ""){
-			alert("El segundo apellido es requerido");
-		}
-		else if(DNI == ""){
-			alert("El DNI es requerido");
-		}
-		else if(isNaN(piso)){
-			alert("El piso es requerido");
-		}
-		else if(isNaN(habitacion)){
-			alert("La habitacion es requerida");
-		}
-		else if(isNaN(administrador)){
-			alert("El administrador es requerido");
-		}
-		else{
-			if(mode == "insert"){
+		}else if(password == ""){
+			alert("La contraseña es requerida");
+		}else if(category==-1){
+			alert("Escoge una categoria");
+		}else{
+			if(mode=="insert"){
 				insertData();
-			}
-			else if(mode == "update"){
+			}else if(mode=="update"){
 				updateData();
 			}
 		}
@@ -102,7 +71,7 @@ $(document).ready(function(){
 		$('#loading').show();
 		getValue();
 		$.post({
-			url : "rest/huespedes.php",
+			url : "rest/usuarios.php",
 			data : data,
 			contentType : false, 
 			processData: false, 
@@ -117,19 +86,20 @@ $(document).ready(function(){
 
 	function getData($id){
 		$.get({
-			url : "rest/huespedes.php",
+			url : "rest/usuarios.php",
 			data : {mode:'loadOne', id:idTarget},
 			success : function(data){
 				var temp = JSON.parse(data);
-				$("[name='nombre']").val(temp.nombre);
-				$("[name='apellido']").val(temp.apellido);
-				$("[name='s_apellido']").val(temp.s_apellido);
-				$("[name='DNI']").val(temp.DNI);
-				$("[name='telefono']").val(temp.telefono);
-				$("[name='piso']").val(temp.piso);
-				$("[name='habitacion']").val(temp.habitacion);
-				$("[name='administrador']").val(temp.administrador);
-				$("[name='img']").val(temp.img);
+				$("#username").val(temp.username);
+				$("#password").val(temp.password);
+			}
+		});
+
+		$.get({
+			url : "rest/administrador.php",
+			data : {mode:"loadOne", id:idTarget},
+			success : function(data){
+				$("[name='kategori']").html(data);
 			}
 		});
 	}
@@ -138,7 +108,7 @@ $(document).ready(function(){
 		$('#loading').show();
 		getValue();
 		$.post({
-			url : "rest/huespedes.php",
+			url : "rest/usuarios.php",
 			data : data,
 			contentType : false, 
 			processData: false, 
@@ -154,19 +124,28 @@ $(document).ready(function(){
 
 	function loadData(){
 		$.get({
-			url : "rest/huespedes.php",
+			url : "rest/usuarios.php",
 			data : {mode:'load'},
 			success : function(data){
 				$("body table tbody").html(data);
 			}
 		});
+
+		$.get({
+			url : "rest/administrador.php",
+			data : {mode:"loadAll"},
+			success : function(data){
+				$("[name='kategori']").html(data);
+			}
+		});
+
 		clearForm();
 	};
 
 	function deleteData(id){
 		$('#loading').show();
 		$.get({
-			url : "rest/huespedes.php",
+			url : "rest/usuarios.php",
 			data : {mode:"delete", id:idTarget},
 			success : function(){
 				loadData();
@@ -179,20 +158,15 @@ $(document).ready(function(){
 	}
 
 	function clearForm(){
-		$("[name='nombre']").val('');
-		$("[name='apellido']").val('');
-		$("[name='s_apellido']").val('');
-		$("[name='DNI']").val('');
-		$("[name='telefono']").val('');
-		$("[name='piso']").val('');
-		$("[name='habitacion']").val('');
-		$("[name='administrador']").val('');
-		$("[name='img']").val('');
+		$("#username").val("");
+		$("#password").val("");
+		$("[name='kategori']").val("");
+		$("[name='product_img']").val("");
 
 		data = new FormData();
 
 		mode = "insert";
-		$("#save").attr("value", "Agregar");
+		$("#save").attr("value", "Añadir");
 		idTarget = -1;
 	}
 })

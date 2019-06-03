@@ -3,6 +3,7 @@
 	<title>Datos</title>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
+	<meta charset="utf-8">
 </head>
 <style type="text/css">
 	table img{
@@ -11,38 +12,33 @@
 </style>
 <body>
 	<p>
-		<button name="agregar">Agregar</button>
+		<button id="add" name="tambah">Añadir</button>
 	</p>
 	<p id="loading" style="display:none">
-	Cargando..............
+	Loading..............
 	</p>
+	
 	<table border="1" cellpadding="5" cellspacing="0">
 		<thead>
 			<tr>
 				<td></td>
-				<td><input type="text" name="nombre"></td>
-				<td><input type="text" name="apellido"></td>
-				<td><input type="text" name="s_apellido"></td>
-				<td><input type="text" name="DNI"></td>
-				<td><input type="number" name="telefono"></td>
-				<td><input type="number" name="piso"></td>
-				<td><input type="number" name="habitacion"></td>
-				<td><input type="number" name="administrador"></td>
-				<td><input type="file" name="img"></td>
-				<td><input type="submit" id="save" value="Agregar"></td>
+				<td><input type="text" id="username" name="username"></td>
+				<td><input type="text" id="password" name="password"></td>
+				<td>
+					<select name="kategori">
+						<option value="-1">==</option>
+					</select>
+				</td>
+				<td><input type="file" name="product_img"></td>
+				<td><input type="submit" id="save" value="Añadir"></td>
 			</tr>
 			<tr>
-				<th></th>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Segundo apellido</th>
-				<th>DNI</th>
-				<th>Telefono</th>
-				<th>Piso</th>
-				<th>Habitacion</th>
+				<th>Id</th>
+				<th>Usuario</th>
+				<th>Contraseña</th>
 				<th>Administrador</th>
-				<th>Imagen</th>
-				<th>Actions</th>
+				<th>Foto</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>

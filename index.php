@@ -4,7 +4,6 @@ session_start();
 if (isset($_SESSION["user"])) {
    header("Location: usuarios.php");
 }
-date_default_timezone_get();
 ?>
 <!DOCTYPE html>
 <html lang="es">

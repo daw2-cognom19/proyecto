@@ -33,7 +33,7 @@ if($mode=="insert"){
 		$result.="<td>".$row["password"]."</td>";
 		$result.="<td>".$row["CategoryName"]."</td>";
 		$result.="<td><img src='images/".$row["ProductImg"]."'></td>";
-		$result.="<td><a class='edit' href='#' data-id='".$row["id"]."'>Edit</a> | <a class='delete' href='#' data-id='".$row["id"]."'>Delete</a></td>";
+		$result.="<td><a class='edit' href='#' data-id='".$row["id"]."'>Editar</a> | <a class='delete' href='#' data-id='".$row["id"]."'>Eliminar</a></td>";
 	$result.="</tr>";
 	};
 	echo $result;

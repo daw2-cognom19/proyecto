@@ -17,7 +17,6 @@ if (isset($_SESSION["user"])) {
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-          
       <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
       <script src="js/ajax.js"></script>
       <link type="text/css" rel="stylesheet" href="css/style.css" />
@@ -33,17 +32,18 @@ if (isset($_SESSION["user"])) {
                </div>
                <!-- body -->
                <div class="modal-header">
-                  <form role="form" method="POST">
+                  <div id="message"></div>
+                  <form role="form" id="login-form" method="POST">
                      <div class="form-group">
-                        <input type="text" class="form-control" id="user" name="user" placeholder="Usuario"/><br>
-                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Contraseña" />
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Usuario"/><br>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" />
                      </div>
                   </form>
                </div>
                <!-- footer -->
                <div class="modal-footer">
                   <button name="login" id="login" class="btn btn-primary btn-block">Log In</button>
-                  <span id="result"></span>
+                  <div id="result"></div>
                </div>
             </div>
          </div>
@@ -422,7 +422,7 @@ if (isset($_SESSION["user"])) {
                      </li>
                      <li>
                         <span style="color: black;font-weight: bold; text-align: center;"> Distancia entre la boca de metro</span><br>
-                        <img src="images/img/distancia.png" alt="Distancia Hostal y boca de metro" width="300" height="250">
+                        <img src="images/img/distancia.PNG" alt="Distancia Hostal y boca de metro" width="300" height="250">
                      </li>
                   </ul>
                </div>

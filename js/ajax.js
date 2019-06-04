@@ -1,9 +1,8 @@
 $(document).ready(function() {
     llamarContacto();
-    logIn();
     detectPage();
+    $("#login").click(logIn); 
 });
-
 function llamarContacto() {
     $('#contact_form').bootstrapValidator({
         feedbackIcons: {
@@ -57,46 +56,35 @@ function llamarContacto() {
         });    
 }
 
-function logIn() {
-    $('#login').click(function(){
-        var user = $('#user').val();
-        var pass = $('#pass').val();
-        if (!!user && !!pass) {
-            $.ajax({
-                url: "login.php",
-                method: "POST",
-                data:{
-                    user:user,
-                    pass:pass
-                },
-                cache: "false",
-                beforeSend: function() {
-                    $("#result").html("Conectando...");
-                },
-                success:function(data) {
-                    $('#login').val("Login");
-                    if (data=="1") {
-                        $(location).attr('href','index.php');
-                    } 
-                    else {
-                        $("#result").html("<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Error!</strong> las credenciales son incorrectas.</div>");
-                    }
-                }
-            });
-        }
-    });    
-}
-
 function detectPage() {
-    alert('j');
     $.ajax({
         url: "rest/transeuntes.php",
         type: "POST",
         beforeSend: function(){
-            console.log('enviando datos');
         },
         success: function(response) {
-            console.log(response);
         }
     });
+}
+
+function logIn(){
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    if(username.length == "" || password.length == ""){
+        $("#message").html("Por favor llena los campos").fadeIn();
+        $("#message").addClass("error");
+        return false;
+    }
+    else{
+        var dataString = 'username='+username+'&password='+password;
+        $.ajax({
+          type : 'POST',
+          url  : 'rest/login.php',
+          data : dataString,
+          success : function(data){
+              console.log(data);
+           }
+          });
+    }
 }

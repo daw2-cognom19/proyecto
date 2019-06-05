@@ -7,10 +7,25 @@ $mode = $_REQUEST['mode'];
 $objUser = new Usuarios();
 
 if($mode=="insert"){
-	$username = $_REQUEST['username'];
-	$password = $_REQUEST['password'];
-	$category = $_REQUEST['category'];
-
+	$preg_name = "/^[^<,\"@/{}()*$%?=>:|;#]*$/i";
+	$preg_pass = "/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/";
+	if (preg_match($preg_name, $_REQUEST['username'])) {
+	    $username = $_REQUEST['username'];
+	}else{
+		return false;
+	}
+	if(preg_match($preg_pass, $_REQUEST['password'])) {
+    	$password = $_REQUEST['password'];;
+	}else{
+		return false;
+	}
+	if (isset($_REQUEST['category'])) {
+		if ($_REQUEST['category'] == 1 || $_REQUEST['category'] == 2) {
+			$category = $_REQUEST['category'];
+		}else{
+			return false;
+		}
+	}
 	$sourcePath = $_FILES['productImg']['tmp_name'];
 	$fileName = $_FILES['productImg']['name'];
 	

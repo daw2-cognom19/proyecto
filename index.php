@@ -19,6 +19,7 @@ if (isset($_SESSION["user"])) {
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
       <script src="js/ajax.js"></script>
+      <script src="js/login.js"></script>
       <link type="text/css" rel="stylesheet" href="css/style.css" />
    </head>
    <body>

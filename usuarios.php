@@ -14,21 +14,25 @@
 	}
 </style>
 <body>
-	<p id="loading" style="display:none">
-	Cargando..............
-	</p>
 	<div class="container">
 		<div class="table-responsive">          
 			<table class="table table-striped table-bordered table-condensed">
 				<thead>
 					<tr>
 						<td></td>
-						<td><input type="text" id="username" name="username"></td>
-						<td><input type="text" id="password" name="password"></td>
 						<td>
-							<select name="kategori">
+							<input type="text" id="username" name="username">
+							<div class="u_error"></div>
+						</td>
+						<td>
+							<input type="text" id="password" name="password">
+							<div class="p_error"></div>
+						</td>
+						<td>
+							<select id="categoria" name="kategori">
 								<option value="-1">==</option>
 							</select>
+							<div class="c_error"></div>
 						</td>
 						<td><input type="file" name="product_img"></td>
 						<td><input type="submit" id="save" value="Añadir"></td>

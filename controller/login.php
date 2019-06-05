@@ -1,5 +1,5 @@
 <?php
-class Login{
+class Login {
 	private $conn;
 	private $table;
 
@@ -8,9 +8,16 @@ class Login{
 		$this->conn = $db->getConnection();
 		$this->table = "usuarios";
 	}
-
-	public function try_login($username, $password){
-		return $this->conn->query("SELECT * FROM $this->table WHERE username = " . $this->$username. " and password = " . $this->$password);
+	public function log_into($usuarios, $password){
+		$res = $conn->query("SELECT * FROM $this->table WHERE username = " . $username . " AND password = " . $password);
+		if ($res->num_rows > 0) {
+			if($row = $res->fetch()) {
+               $_SESSION['username'] = $row['username'];
+               echo 'Exito!';
+               exit();
+           }
+		}
 	}
 }
+
 ?>

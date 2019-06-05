@@ -1,10 +1,10 @@
 <?php
-include '../conexion.php';  
-include '../controller/login.php';  
+require_once "../conexion.php";
+require_once "../controller/login.php";
 $objLogin = new Login();
 if (isset($_POST['login'])) {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 }
-$objLogin->try_login($username, $password);
+$objLogin->log_into($username, $password);
 ?>

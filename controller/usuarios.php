@@ -13,7 +13,6 @@ class Usuarios{
 	}
 	
 	public function save($username, $password, $admin, $productImg){
-		echo $name;
 		$this->conn->query("INSERT into $this->table(username, password, CategoryID, productImg) VALUES('$username', '$password', '$admin', '$productImg')");
 	}
 

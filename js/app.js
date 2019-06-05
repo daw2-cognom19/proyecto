@@ -1,5 +1,7 @@
 $(document).ready(function(){
+	user = false;
 	$("#save").click(saveData);
+	saveData();
 	$("#add").click(function(){
 		mode = "insert";
 		$("#save").attr("value", "Añadir");
@@ -53,11 +55,11 @@ $(document).ready(function(){
 	function saveData(){
 		getValue();
 		if(username == ""){
-			alert("El nombre es requerido");
+			alert("nama wajib diisi");
 		}else if(password == ""){
-			alert("La contraseña es requerida");
+			alert("deskripsi wajib diisi");
 		}else if(category==-1){
-			alert("Escoge una categoria");
+			alert("pilih kategori!");
 		}else{
 			if(mode=="insert"){
 				insertData();
@@ -66,6 +68,7 @@ $(document).ready(function(){
 			}
 		}
 	};
+
 
 	function insertData(){
 		$('#loading').show();
@@ -170,3 +173,4 @@ $(document).ready(function(){
 		idTarget = -1;
 	}
 })
+

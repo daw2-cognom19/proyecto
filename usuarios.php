@@ -35,7 +35,7 @@
 							<div class="c_error"></div>
 						</td>
 						<td><input type="file" name="product_img"></td>
-						<td><input type="submit" id="save" value="Añadir"></td>
+						<td><input class="btn btn-primary" type="submit" id="save" value="Añadir"></td>
 					</tr>
 					<tr>
 						<th>Id</th>
